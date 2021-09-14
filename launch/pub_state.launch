@@ -1,0 +1,18 @@
+<launch>
+<group ns="traffic1">
+  <arg name="topic_name" default="traffic_light/traffic_light_state"/>
+  <node pkg="rostopic" type="rostopic" name="traffic_light_state" output="screen" args="pub $(arg topic_name) std_msgs/String 'data: '1a''"/>
+</group>
+<group ns="traffic2">
+  <arg name="topic_name" default="traffic_light/traffic_light_state"/>
+  <node pkg="rostopic" type="rostopic" name="traffic_light_state" output="screen" args="pub $(arg topic_name) std_msgs/String 'data: '2a''"/>
+</group>
+<group ns="traffic3">
+  <arg name="topic_name" default="traffic_light/traffic_light_state"/>
+  <node pkg="rostopic" type="rostopic" name="traffic_light_state" output="screen" args="pub $(arg topic_name) std_msgs/String 'data: '3a''"/>
+</group>
+<group ns="traffic4">
+  <arg name="topic_name" default="traffic_light/traffic_light_state"/>
+  <node pkg="rostopic" type="rostopic" name="traffic_light_state" output="screen" args="pub $(arg topic_name) std_msgs/String 'data: '4a''"/>
+</group>
+  </launch>

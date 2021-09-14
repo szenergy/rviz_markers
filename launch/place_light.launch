@@ -1,0 +1,18 @@
+<launch>
+
+  <group ns="traffic1/traffic_light">
+    <node pkg="traffic_light" name="place_light" type="place_light.py" output="screen" launch-prefix="gnome-terminal --"/>
+  </group>
+
+  <group ns="traffic2/traffic_light">
+    <node pkg="traffic_light" name="place_light" type="place_light.py" output="screen" launch-prefix="gnome-terminal --"/>
+  </group>
+
+  <group ns="traffic3/traffic_light">
+    <node pkg="traffic_light" name="place_light" type="place_light.py" output="screen" launch-prefix="gnome-terminal --"/>
+  </group>
+
+  <group ns="traffic4/traffic_light">
+    <node pkg="traffic_light" name="place_light" type="place_light.py" output="screen" launch-prefix="gnome-terminal --"/>
+  </group>
+  </launch>

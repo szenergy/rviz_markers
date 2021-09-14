@@ -1,0 +1,54 @@
+<launch>
+<group ns="traffic1">
+  <arg name="topic_name" default="traffic_light/traffic_light_placement"/>
+  <node pkg="rostopic" type="rostopic" name="traffic_light_placement" output="screen" args="pub $(arg topic_name) geometry_msgs/Pose 
+  '{position: 
+  {x: 1.0, 
+  y: 0.0, 
+  z: 0.0}, 
+  orientation:
+  {x: 0.0,
+  y: 0.0,
+  z: 0.0,
+  w: 1.0}}'"/>
+</group>
+<group ns="traffic2">
+  <arg name="topic_name" default="traffic_light/traffic_light_placement"/>
+  <node pkg="rostopic" type="rostopic" name="traffic_light_placement" output="screen" args="pub $(arg topic_name) geometry_msgs/Pose 
+  '{position: 
+  {x: -1.0, 
+  y: 0.0, 
+  z: 0.0}, 
+  orientation:
+  {x: 0.0,
+  y: 0.0,
+  z: 0.0,
+  w: 1.0}}'"/>
+</group>
+<group ns="traffic3">
+  <arg name="topic_name" default="traffic_light/traffic_light_placement"/>
+  <node pkg="rostopic" type="rostopic" name="traffic_light_placement" output="screen" args="pub $(arg topic_name) geometry_msgs/Pose 
+  '{position: 
+  {x: 0.0, 
+  y: 1.0, 
+  z: 0.0}, 
+  orientation:
+  {x: 0.0,
+  y: 0.0,
+  z: 0.0,
+  w: 1.0}}'"/>
+</group>
+<group ns="traffic4">
+  <arg name="topic_name" default="traffic_light/traffic_light_placement"/>
+  <node pkg="rostopic" type="rostopic" name="traffic_light_placement" output="screen" args="pub $(arg topic_name) geometry_msgs/Pose 
+  '{position: 
+  {x: 0.0, 
+  y: -1.0, 
+  z: 0.0}, 
+  orientation:
+  {x: 0.0,
+  y: 0.0,
+  z: 0.0,
+  w: 1.0}}'"/>
+</group>
+  </launch>
