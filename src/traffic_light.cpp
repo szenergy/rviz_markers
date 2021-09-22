@@ -133,7 +133,7 @@ int main( int argc, char** argv )
 
     light1_marker.mesh_resource = "package://traffic_light/stl/light1.stl";
        
-    while(ros::ok) 
+    while(ros::ok()) 
     {
 
         box_marker.header.stamp = ros::Time::now();
