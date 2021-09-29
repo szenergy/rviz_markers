@@ -63,7 +63,7 @@ int main( int argc, char** argv )
 
     drone_marker.lifetime = ros::Duration();
 
-    drone_marker.mesh_resource = "package://traffic_light/stl/drone600.stl";
+    drone_marker.mesh_resource = "package://rviz_markers/stl/drone600.stl";
 
     while(ros::ok()) 
     {

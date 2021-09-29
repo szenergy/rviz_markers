@@ -62,7 +62,7 @@ int main( int argc, char** argv )
 
     golf_marker.lifetime = ros::Duration();
 
-    golf_marker.mesh_resource = "package://traffic_light/stl/egolf.stl";
+    golf_marker.mesh_resource = "package://rviz_markers/stl/egolf.stl";
 
     transform.setOrigin( tf::Vector3(location.position.x,location.position.y,location.position.z) );
     transform.setRotation(tf::Quaternion(location.orientation.x,location.orientation.y,location.orientation.z,location.orientation.w));

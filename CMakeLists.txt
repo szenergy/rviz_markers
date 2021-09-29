@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0.2)
-project(traffic_light)
+project(rviz_markers)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
  add_compile_options(-std=c++11)
@@ -110,7 +110,7 @@ find_package(catkin REQUIRED COMPONENTS
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES traffic_light
+#  LIBRARIES rviz_markers
   CATKIN_DEPENDS 
     roscpp 
     tf
@@ -133,8 +133,9 @@ include_directories(
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/traffic_light.cpp
+#   src/${PROJECT_NAME}/rviz_markers.cpp
 # )
+
 add_executable(traffic_light src/traffic_light.cpp)
 add_executable(drone src/drone.cpp)
 add_executable(egolf src/egolf.cpp)
@@ -153,7 +154,7 @@ add_dependencies(egolf  ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TA
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-# add_executable(${PROJECT_NAME}_node src/traffic_light_node.cpp)
+# add_executable(${PROJECT_NAME}_node src/rviz_markers_node.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -169,7 +170,7 @@ add_dependencies(egolf  ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TA
 # target_link_libraries(${PROJECT_NAME}_node
 #   ${catkin_LIBRARIES}
 # )
-target_link_libraries(traffic_light ${catkin_LIBRARIES})
+#target_link_libraries(drone ${catkin_LIBRARIES})
 
 #############
 ## Install ##
@@ -220,7 +221,7 @@ catkin_install_python(PROGRAMS
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_traffic_light.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_rviz_markers.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()

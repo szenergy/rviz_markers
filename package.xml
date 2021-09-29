@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>traffic_light</name>
+  <name>rviz_markers</name>
   <version>0.0.0</version>
-  <description>The traffic_light package</description>
+  <description>The rviz_markers package</description>
 
   <!-- One maintainer tag required, multiple allowed, one person per tag -->
   <!-- Example:  -->
   <!-- <maintainer email="jane.doe@example.com">Jane Doe</maintainer> -->
-  <maintainer email="balazs@todo.todo">balazs</maintainer>
+  <maintainer email="sirius@todo.todo">sirius</maintainer>
 
 
   <!-- One license tag required, multiple allowed, one license per tag -->
@@ -19,7 +19,7 @@
   <!-- Url tags are optional, but multiple are allowed, one per tag -->
   <!-- Optional attribute type can be: website, bugtracker, or repository -->
   <!-- Example: -->
-  <!-- <url type="website">http://wiki.ros.org/traffic_light</url> -->
+  <!-- <url type="website">http://wiki.ros.org/rviz_markers</url> -->
 
 
   <!-- Author tags are optional, multiple are allowed, one per tag -->
@@ -62,7 +62,6 @@
   <depend>visualization_msgs</depend>
   <build_depend>message_generation</build_depend>
   <exec_depend>message_runtime</exec_depend>
-
 
   <!-- The export tag contains other, unspecified, tags -->
   <export>
