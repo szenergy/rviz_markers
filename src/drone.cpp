@@ -6,6 +6,8 @@
 
 
 geometry_msgs::Pose location;
+std::string drone_frame_id;
+
 
 int main( int argc, char** argv )
 {
@@ -23,20 +25,22 @@ int main( int argc, char** argv )
     ros::init(argc, argv, "drone_3d");
     ros::NodeHandle n("~");
 
+    n.param<std::string>("drone_frame_id", drone_frame_id, "drone_link");
+
     ros::Publisher marker_pub = n.advertise<visualization_msgs::Marker>("drone_marker", 100);
     
     ROS_INFO("Drone 3D model published");
 
-    ros::Rate rate(10);
+    ros::Rate rate(40);
 
     visualization_msgs::Marker drone_marker;
 
     static tf::TransformBroadcaster br;
     tf::Transform transform;
 
-    drone_marker.header.frame_id = "drone/os1_sensor";
+    drone_marker.header.frame_id = drone_frame_id;
         
-    drone_marker.ns = "drone_base";
+    //drone_marker.ns = "drone_base";
     drone_marker.id = 0;
 
     drone_marker.type = visualization_msgs::Marker::MESH_RESOURCE;

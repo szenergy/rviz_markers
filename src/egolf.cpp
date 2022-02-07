@@ -6,6 +6,7 @@
 
 
 geometry_msgs::Pose location;
+std::string golf_frame_id;
 
 int main( int argc, char** argv )
 {
@@ -21,21 +22,22 @@ int main( int argc, char** argv )
     
     ros::init(argc, argv, "egolf_3d");
     ros::NodeHandle n("~");
+    n.param<std::string>("golf_frame_id", golf_frame_id, "base_link");
 
     ros::Publisher marker_pub = n.advertise<visualization_msgs::Marker>("egolf_marker", 100);
     
     ROS_INFO("E-golf 3D model published");
 
-    ros::Rate rate(10);
+    ros::Rate rate(40);
 
     visualization_msgs::Marker golf_marker;
 
     static tf::TransformBroadcaster br;
     tf::Transform transform;
 
-    golf_marker.header.frame_id = "base_link";
+    golf_marker.header.frame_id = golf_frame_id;
         
-    golf_marker.ns = "egolf_base";
+    //golf_marker.ns = "egolf_base";
     golf_marker.id = 0;
 
     golf_marker.type = visualization_msgs::Marker::MESH_RESOURCE;
