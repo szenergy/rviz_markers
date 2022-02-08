@@ -28,7 +28,7 @@ Using the VW E-Golf marker:
 1. In a terminal window, start roscore
 `roscore`
 2. In a different terminal window, run:
-`rosrun rviz_markers egolf _golf_frame_id:=fake_golf`
+`rosrun rviz_markers egolf _frame_id:=fake_golf`
 
 3. The marker should be visible using Rviz, as Marker, choose `fake_golf` frame id. 
 

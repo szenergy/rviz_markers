@@ -25,7 +25,7 @@ int main( int argc, char** argv )
     ros::init(argc, argv, "drone_3d");
     ros::NodeHandle n("~");
 
-    n.param<std::string>("drone_frame_id", drone_frame_id, "drone_link");
+    n.param<std::string>("frame_id", drone_frame_id, "drone_link");
 
     ros::Publisher marker_pub = n.advertise<visualization_msgs::Marker>("drone_marker", 100);
     

@@ -139,12 +139,11 @@ include_directories(
 add_executable(traffic_light src/traffic_light.cpp)
 add_executable(drone src/drone.cpp)
 add_executable(egolf src/egolf.cpp)
+add_executable(nissan src/nissan.cpp)
 target_link_libraries(traffic_light ${catkin_LIBRARIES})
 target_link_libraries(drone ${catkin_LIBRARIES})
 target_link_libraries(egolf ${catkin_LIBRARIES})
-add_dependencies(traffic_light  ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-add_dependencies(drone  ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-add_dependencies(egolf  ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(nissan ${catkin_LIBRARIES})
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
