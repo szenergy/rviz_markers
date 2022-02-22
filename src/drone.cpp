@@ -51,14 +51,14 @@ int main( int argc, char** argv )
     drone_marker.pose.position.y = 0;
     drone_marker.pose.position.z = 0;
 
-    drone_marker.pose.orientation.x = 0.707;
+    drone_marker.pose.orientation.x = 0;
     drone_marker.pose.orientation.y = 0;
     drone_marker.pose.orientation.z = 0;
-    drone_marker.pose.orientation.w = 0.707;
+    drone_marker.pose.orientation.w = 0;
 
-    drone_marker.scale.x = 0.01;
-    drone_marker.scale.y = 0.01;
-    drone_marker.scale.z = 0.01;
+    drone_marker.scale.x = 1;
+    drone_marker.scale.y = 1;
+    drone_marker.scale.z = 1;
 
     drone_marker.color.r = 0.5f;
     drone_marker.color.g = 0.5f;

@@ -27,14 +27,15 @@ int main( int argc, char** argv )
     nissan_marker.pose.position.x = 0;
     nissan_marker.pose.position.y = 0;
     nissan_marker.pose.position.z = 0;
-    nissan_marker.pose.orientation.x = 0.707;
+    //nissan_marker.pose.orientation.x = 0.707;
+    nissan_marker.pose.orientation.x = 0;
     nissan_marker.pose.orientation.y = 0;
     nissan_marker.pose.orientation.z = 0;
-    nissan_marker.pose.orientation.w = 0.707;
+    nissan_marker.pose.orientation.w = 0;
 
-    nissan_marker.scale.x = 0.01;
-    nissan_marker.scale.y = 0.01;
-    nissan_marker.scale.z = 0.01;
+    nissan_marker.scale.x = 1;
+    nissan_marker.scale.y = 1;
+    nissan_marker.scale.z = 1;
 
     nissan_marker.color.r = 0.8f;
     nissan_marker.color.g = 0.8f;

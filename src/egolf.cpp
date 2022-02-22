@@ -32,14 +32,14 @@ int main( int argc, char** argv )
     golf_marker.pose.position.y = 0;
     golf_marker.pose.position.z = 0;
 
-    golf_marker.pose.orientation.x = 0.707;
+    golf_marker.pose.orientation.x = 0;
     golf_marker.pose.orientation.y = 0;
     golf_marker.pose.orientation.z = 0;
-    golf_marker.pose.orientation.w = 0.707;
+    golf_marker.pose.orientation.w = 0;
 
-    golf_marker.scale.x = 0.01;
-    golf_marker.scale.y = 0.01;
-    golf_marker.scale.z = 0.01;
+    golf_marker.scale.x = 1;
+    golf_marker.scale.y = 1;
+    golf_marker.scale.z = 1;
 
     golf_marker.color.r = 0.6f;
     golf_marker.color.g = 0.6f;
