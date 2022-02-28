@@ -40,7 +40,6 @@ int main( int argc, char** argv )
 
     drone_marker.header.frame_id = drone_frame_id;
         
-    //drone_marker.ns = "drone_base";
     drone_marker.id = 0;
 
     drone_marker.type = visualization_msgs::Marker::MESH_RESOURCE;

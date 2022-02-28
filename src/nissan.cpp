@@ -27,7 +27,7 @@ int main( int argc, char** argv )
     nissan_marker.pose.position.x = 0;
     nissan_marker.pose.position.y = 0;
     nissan_marker.pose.position.z = 0;
-    //nissan_marker.pose.orientation.x = 0.707;
+    
     nissan_marker.pose.orientation.x = 0;
     nissan_marker.pose.orientation.y = 0;
     nissan_marker.pose.orientation.z = 0;

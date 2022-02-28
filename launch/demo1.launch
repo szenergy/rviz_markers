@@ -3,6 +3,7 @@
     <node args="2.0 4.0 0.0 0.0 0.0 0.0 map fake_golf 50" name="golf_f_tf" pkg="tf" type="static_transform_publisher"/>
     <node args="2.0 0.0 0.0 0.0 0.0 0.0 map fake_lexus 50" name="lexus_f_tf" pkg="tf" type="static_transform_publisher"/>
     <node args="2.0 -3.0 0.0 0.0 0.0 0.0 map fake_nissan 50" name="nissan_f_tf" pkg="tf" type="static_transform_publisher"/>
+    <node args="6.0 0.0 0.04 0.0 0.0 0.0 map fake_rosbot 50" name="rosbot_f_tf" pkg="tf" type="static_transform_publisher"/>
     <node pkg="rviz_markers" type="drone" name="drone_f" output="screen">
             <param name="frame_id" value="fake_drone"/>
     </node>
@@ -19,6 +20,10 @@
     -->
     <node pkg="rviz_markers" type="nissan" name="nissan_f" output="screen">
             <param name="frame_id" value="fake_nissan"/>
+    </node>
+
+    <node pkg="rviz_markers" type="rosbot" name="rosbot_f" output="screen">
+            <param name="frame_id" value="fake_rosbot"/>
     </node>
 
     <node name="rviz_config" pkg="rviz" type="rviz"  args="-d $(find rviz_markers)/config/demo1.rviz" output="screen"/>
