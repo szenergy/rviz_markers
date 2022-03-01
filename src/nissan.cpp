@@ -4,15 +4,12 @@
 #include <geometry_msgs/Pose.h>
 #include <tf/transform_broadcaster.h>
 
-
 int main( int argc, char** argv )
 {
-  
-    std::string frame_id;
+    std::string nissan_frame_id;
     ros::init(argc, argv, "nissan_3d");
     ros::NodeHandle n("~");
-
-    n.param<std::string>("frame_id", frame_id, "nissan_link");
+    n.param<std::string>("frame_id", nissan_frame_id, "nissan_link");
 
     ros::Publisher marker_pub = n.advertise<visualization_msgs::Marker>("nissan_marker", 100);
     
@@ -20,18 +17,10 @@ int main( int argc, char** argv )
 
     ros::Rate rate(40);
     visualization_msgs::Marker nissan_marker;
-    nissan_marker.header.frame_id = frame_id;
+    nissan_marker.header.frame_id = nissan_frame_id;
     nissan_marker.id = 0;
     nissan_marker.type = visualization_msgs::Marker::MESH_RESOURCE;
     nissan_marker.action = visualization_msgs::Marker::ADD;
-    nissan_marker.pose.position.x = 0;
-    nissan_marker.pose.position.y = 0;
-    nissan_marker.pose.position.z = 0;
-    
-    nissan_marker.pose.orientation.x = 0;
-    nissan_marker.pose.orientation.y = 0;
-    nissan_marker.pose.orientation.z = 0;
-    nissan_marker.pose.orientation.w = 0;
 
     nissan_marker.scale.x = 1;
     nissan_marker.scale.y = 1;

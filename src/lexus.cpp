@@ -4,15 +4,12 @@
 #include <geometry_msgs/Pose.h>
 #include <tf/transform_broadcaster.h>
 
-
 int main( int argc, char** argv )
 {
-  
-    std::string frame_id;
+    std::string lexus_frame_id;
     ros::init(argc, argv, "lexus_3d");
     ros::NodeHandle n("~");
-
-    n.param<std::string>("frame_id", frame_id, "lexus_link");
+    n.param<std::string>("frame_id", lexus_frame_id, "lexus_link");
 
     ros::Publisher marker_pub = n.advertise<visualization_msgs::Marker>("lexus_marker", 100);
     
@@ -20,19 +17,11 @@ int main( int argc, char** argv )
  
     ros::Rate rate(40);
     visualization_msgs::Marker lexus_marker;
-    lexus_marker.header.frame_id = frame_id;
+    lexus_marker.header.frame_id = lexus_frame_id;
     lexus_marker.id = 0;
     lexus_marker.type = visualization_msgs::Marker::MESH_RESOURCE;
     lexus_marker.action = visualization_msgs::Marker::ADD;
-    lexus_marker.pose.position.x = 0;
-    lexus_marker.pose.position.y = 0;
-    lexus_marker.pose.position.z = 0;
-    
-    lexus_marker.pose.orientation.x = 0;
-    lexus_marker.pose.orientation.y = 0;
-    lexus_marker.pose.orientation.z = 0;
-    lexus_marker.pose.orientation.w = 0;
-
+   
     lexus_marker.scale.x = 1;
     lexus_marker.scale.y = 1;
     lexus_marker.scale.z = 1;

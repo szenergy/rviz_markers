@@ -4,8 +4,6 @@
 #include <geometry_msgs/Pose.h>
 #include <tf/transform_broadcaster.h>
 
-
-
 int main( int argc, char** argv )
 {
     std::string rosbot_frame_id;
@@ -18,24 +16,11 @@ int main( int argc, char** argv )
     ROS_INFO("Husarion ROSbot 2.0 Pro 3D model published");
 
     ros::Rate rate(40);
-
     visualization_msgs::Marker rosbot_marker;
-
-    static tf::TransformBroadcaster br;
-    tf::Transform transform;
-
     rosbot_marker.header.frame_id = rosbot_frame_id;
     rosbot_marker.id = 0;
     rosbot_marker.type = visualization_msgs::Marker::MESH_RESOURCE;
     rosbot_marker.action = visualization_msgs::Marker::ADD;
-    rosbot_marker.pose.position.x = 0;
-    rosbot_marker.pose.position.y = 0;
-    rosbot_marker.pose.position.z = 0;
-
-    rosbot_marker.pose.orientation.x = 0;
-    rosbot_marker.pose.orientation.y = 0;
-    rosbot_marker.pose.orientation.z = 0;
-    rosbot_marker.pose.orientation.w = 0;
 
     rosbot_marker.scale.x = 1;
     rosbot_marker.scale.y = 1;

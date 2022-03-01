@@ -4,8 +4,6 @@
 #include <geometry_msgs/Pose.h>
 #include <tf/transform_broadcaster.h>
 
-
-
 int main( int argc, char** argv )
 {
     std::string golf_frame_id;
@@ -18,25 +16,12 @@ int main( int argc, char** argv )
     ROS_INFO("E-golf 3D model published");
 
     ros::Rate rate(40);
-
     visualization_msgs::Marker golf_marker;
-
-    static tf::TransformBroadcaster br;
-    tf::Transform transform;
-
     golf_marker.header.frame_id = golf_frame_id;
     golf_marker.id = 0;
     golf_marker.type = visualization_msgs::Marker::MESH_RESOURCE;
     golf_marker.action = visualization_msgs::Marker::ADD;
-    golf_marker.pose.position.x = 0;
-    golf_marker.pose.position.y = 0;
-    golf_marker.pose.position.z = 0;
-
-    golf_marker.pose.orientation.x = 0;
-    golf_marker.pose.orientation.y = 0;
-    golf_marker.pose.orientation.z = 0;
-    golf_marker.pose.orientation.w = 0;
-
+    
     golf_marker.scale.x = 1;
     golf_marker.scale.y = 1;
     golf_marker.scale.z = 1;
