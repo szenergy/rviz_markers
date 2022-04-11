@@ -142,12 +142,14 @@ add_executable(egolf src/egolf.cpp)
 add_executable(nissan src/nissan.cpp)
 add_executable(rosbot src/rosbot.cpp)
 add_executable(lexus src/lexus.cpp)
+add_executable(turtlecar src/turtlecar.cpp)
 target_link_libraries(traffic_light ${catkin_LIBRARIES})
 target_link_libraries(drone ${catkin_LIBRARIES})
 target_link_libraries(egolf ${catkin_LIBRARIES})
 target_link_libraries(nissan ${catkin_LIBRARIES})
 target_link_libraries(rosbot ${catkin_LIBRARIES})
 target_link_libraries(lexus ${catkin_LIBRARIES})
+target_link_libraries(turtlecar ${catkin_LIBRARIES})
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries

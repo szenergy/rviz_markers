@@ -67,6 +67,8 @@ Visualization Manager:
           Value: true
         fake_rosbot:
           Value: true
+        fake_turtlecar:
+          Value: true
         map:
           Value: true
       Marker Scale: 2
@@ -85,6 +87,8 @@ Visualization Manager:
           fake_nissan:
             {}
           fake_rosbot:
+            {}
+          fake_turtlecar:
             {}
       Update Interval: 0
       Value: true
@@ -136,6 +140,14 @@ Visualization Manager:
         "": true
       Queue Size: 100
       Value: true
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: /turtlecar_f/turtlecar_marker
+      Name: Marker
+      Namespaces:
+        "": true
+      Queue Size: 100
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 186; 189; 182
@@ -164,25 +176,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 10.989630699157715
+      Distance: 2.302293300628662
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 4.878313064575195
-        Y: 2.1239805221557617
-        Z: 1.6958916187286377
+        X: 6.463164806365967
+        Y: 1.437875747680664
+        Z: 0.9566401243209839
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.5303984880447388
+      Pitch: 0.4403984844684601
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 0.6440545320510864
+      Yaw: 0.1540541648864746
     Saved: ~
 Window Geometry:
   Displays:
