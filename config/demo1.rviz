@@ -63,6 +63,8 @@ Visualization Manager:
           Value: true
         fake_lexus:
           Value: true
+        fake_loomo:
+          Value: true
         fake_nissan:
           Value: true
         fake_rosbot:
@@ -83,6 +85,8 @@ Visualization Manager:
           fake_golf:
             {}
           fake_lexus:
+            {}
+          fake_loomo:
             {}
           fake_nissan:
             {}
@@ -143,6 +147,14 @@ Visualization Manager:
     - Class: rviz/Marker
       Enabled: true
       Marker Topic: /turtlecar_f/turtlecar_marker
+      Name: Marker
+      Namespaces:
+        "": true
+      Queue Size: 100
+      Value: true
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: /loomo_f/loomo_marker
       Name: Marker
       Namespaces:
         "": true
@@ -212,5 +224,5 @@ Window Geometry:
   Views:
     collapsed: true
   Width: 2560
-  X: 8
-  Y: 441
+  X: 16
+  Y: 472
