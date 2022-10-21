@@ -16,6 +16,7 @@
 
     <node pkg="rviz_markers" type="lexus" name="lexus_f" output="screen">
             <param name="frame_id" value="fake_lexus"/>
+            <param name="foxglove_rotation" value="false"/>
     </node>
 
     <node pkg="rviz_markers" type="nissan" name="nissan_f" output="screen">

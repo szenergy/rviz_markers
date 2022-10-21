@@ -7,9 +7,11 @@
 int main( int argc, char** argv )
 {
     std::string lexus_frame_id;
+    bool foxglove_rotation;
     ros::init(argc, argv, "lexus_3d");
     ros::NodeHandle n("~");
     n.param<std::string>("frame_id", lexus_frame_id, "lexus_link");
+    n.param<bool>("foxglove_rotation", foxglove_rotation, false);
 
     ros::Publisher marker_pub = n.advertise<visualization_msgs::Marker>("lexus_marker", 100);
     
@@ -30,6 +32,19 @@ int main( int argc, char** argv )
     lexus_marker.color.g = 0.8f;
     lexus_marker.color.b = 0.8f;
     lexus_marker.color.a = 1.0;
+    if(foxglove_rotation){
+
+        lexus_marker.pose.orientation.x = -0.707;
+        lexus_marker.pose.orientation.y = 0.0;
+        lexus_marker.pose.orientation.z = 0.0;
+        lexus_marker.pose.orientation.w = 0.707;
+    }
+    else{
+        lexus_marker.pose.orientation.x = 0.0;
+        lexus_marker.pose.orientation.y = 0.0;
+        lexus_marker.pose.orientation.z = 0.0;
+        lexus_marker.pose.orientation.w = 1.0;       
+    }
 
     lexus_marker.lifetime = ros::Duration();
 
