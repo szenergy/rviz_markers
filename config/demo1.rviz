@@ -57,6 +57,8 @@ Visualization Manager:
       Frame Timeout: 100
       Frames:
         All Enabled: true
+        fake_cone:
+          Value: true
         fake_drone:
           Value: true
         fake_golf:
@@ -69,6 +71,10 @@ Visualization Manager:
           Value: true
         fake_rosbot:
           Value: true
+        fake_stopbase:
+          Value: true
+        fake_stopletters:
+          Value: true
         fake_turtlecar:
           Value: true
         map:
@@ -80,6 +86,8 @@ Visualization Manager:
       Show Names: true
       Tree:
         map:
+          fake_cone:
+            {}
           fake_drone:
             {}
           fake_golf:
@@ -91,6 +99,10 @@ Visualization Manager:
           fake_nissan:
             {}
           fake_rosbot:
+            {}
+          fake_stopbase:
+            {}
+          fake_stopletters:
             {}
           fake_turtlecar:
             {}
@@ -160,6 +172,30 @@ Visualization Manager:
         "": true
       Queue Size: 100
       Value: true
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: /stopletters_f/stopletters_marker
+      Name: Marker
+      Namespaces:
+        "": true
+      Queue Size: 100
+      Value: true
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: /stopbase_f/stopbase_marker
+      Name: Marker
+      Namespaces:
+        "": true
+      Queue Size: 100
+      Value: true
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: /cone_f/cone_marker
+      Name: Marker
+      Namespaces:
+        "": true
+      Queue Size: 100
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 186; 189; 182
@@ -188,7 +224,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 8.428471565246582
+      Distance: 8.728569984436035
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -203,10 +239,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.30539795756340027
+      Pitch: 0.34039780497550964
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 5.967236518859863
+      Yaw: 0.48905110359191895
     Saved: ~
 Window Geometry:
   Displays:

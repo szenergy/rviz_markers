@@ -6,6 +6,10 @@
     <node args="6.5 0.5 0.04 0.0 0.0 0.0 map fake_rosbot 50" name="rosbot_f_tf" pkg="tf" type="static_transform_publisher"/>
     <node args="6.5 -0.5 0.04 0.0 0.0 0.0 map fake_turtlecar 50" name="turtlecar_f_tf" pkg="tf" type="static_transform_publisher"/>
     <node args="6.5 0.0 0.105 0.0 0.0 0.0 map fake_loomo 50" name="loomo_f_tf" pkg="tf" type="static_transform_publisher"/>
+    <node args="5.0 2.0 1.0 0.0 0.0 0.0 map fake_stopbase 50" name="stopbase_f_tf" pkg="tf" type="static_transform_publisher"/>
+    <node args="5.0 2.0 1.0 0.0 0.0 0.0 map fake_stopletters 50" name="stopletters_f_tf" pkg="tf" type="static_transform_publisher"/>
+    <node args="6.0 2.0 0.0 0.0 0.0 0.0 map fake_cone 50" name="cone_f_tf" pkg="tf" type="static_transform_publisher"/>
+
 
     <node pkg="rviz_markers" type="drone" name="drone_f" output="screen">
             <param name="frame_id" value="fake_drone"/>
@@ -33,6 +37,18 @@
 
     <node pkg="rviz_markers" type="loomo" name="loomo_f" output="screen">
             <param name="frame_id" value="fake_loomo"/>
+    </node>
+
+    <node pkg="rviz_markers" type="stopbase" name="stopbase_f" output="screen">
+            <param name="frame_id" value="fake_stopbase"/>
+    </node>
+
+    <node pkg="rviz_markers" type="stopletters" name="stopletters_f" output="screen">
+            <param name="frame_id" value="fake_stopletters"/>
+    </node>
+
+    <node pkg="rviz_markers" type="cone" name="cone_f" output="screen">
+            <param name="frame_id" value="fake_cone"/>
     </node>
 
     <node name="rviz_config" pkg="rviz" type="rviz"  args="-d $(find rviz_markers)/config/demo1.rviz" output="screen"/>
