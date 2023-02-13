@@ -1,26 +1,28 @@
-#include <ros/ros.h>
-#include <visualization_msgs/Marker.h>
-#include "std_msgs/String.h"
-#include <geometry_msgs/Pose.h>
-#include <tf/transform_broadcaster.h>
+#include <sstream>
+#include "visualization_msgs/msg/marker.hpp"
+#include "std_msgs/msg/string.hpp"
+#include <geometry_msgs/msg/pose.hpp>
+#include <tf2_ros/transform_broadcaster.h>
 
-int main( int argc, char** argv )
+#include "rclcpp/rclcpp.hpp"
+#include "std_msgs/msg/string.hpp"
+
+int main(int argc, char** argv)
 {
     std::string stopbase_frame_id;
-    ros::init(argc, argv, "stopbase");
-    ros::NodeHandle n("~");
-    n.param<std::string>("frame_id", stopbase_frame_id, "base_link");
+    rclcpp::init(argc, argv);
+    auto node = rclcpp::Node::make_shared("stopbase_3d");
+    node->declare_parameter<std::string>("stopbase_frame_id", "base_link");
 
-    ros::Publisher marker_pub = n.advertise<visualization_msgs::Marker>("stopbase_marker", 100);
-    
-    ROS_INFO("Stop sign 3D model published");
+    node->get_parameter("stopbase_frame_id", stopbase_frame_id);
 
-    ros::Rate rate(40);
-    visualization_msgs::Marker stopbase_marker;
+    auto marker_pub = node->create_publisher<visualization_msgs::msg::Marker>("stopbase_marker", 100);
+    rclcpp::Rate loop_rate(40);
+    visualization_msgs::msg::Marker stopbase_marker;
     stopbase_marker.header.frame_id = stopbase_frame_id;
     stopbase_marker.id = 0;
-    stopbase_marker.type = visualization_msgs::Marker::MESH_RESOURCE;
-    stopbase_marker.action = visualization_msgs::Marker::ADD;
+    stopbase_marker.type = visualization_msgs::msg::Marker::MESH_RESOURCE;
+    stopbase_marker.action = visualization_msgs::msg::Marker::ADD;
     
     stopbase_marker.scale.x = 1;
     stopbase_marker.scale.y = 1;
@@ -31,16 +33,13 @@ int main( int argc, char** argv )
     stopbase_marker.color.b = 0.14f;
     stopbase_marker.color.a = 1.0;
 
-    stopbase_marker.lifetime = ros::Duration();
-
     stopbase_marker.mesh_resource = "package://rviz_markers/stl/StopSign.stl";
 
-    while(ros::ok()) 
+    while(rclcpp::ok()) 
     {
-        stopbase_marker.header.stamp = ros::Time::now();
-        stopbase_marker.lifetime = ros::Duration();
-        marker_pub.publish(stopbase_marker);
-        ros::spinOnce();
-        rate.sleep();
+        marker_pub->publish(stopbase_marker); 
+        rclcpp::spin_some(node);
+        loop_rate.sleep();
     }
+    return 0;
 }

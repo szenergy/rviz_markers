@@ -1,28 +1,32 @@
-#include <ros/ros.h>
-#include <visualization_msgs/Marker.h>
-#include "std_msgs/String.h"
-#include <geometry_msgs/Pose.h>
-#include <tf/transform_broadcaster.h>
+#include <sstream>
+#include "visualization_msgs/msg/marker.hpp"
+#include "std_msgs/msg/string.hpp"
+#include <geometry_msgs/msg/pose.hpp>
+#include <tf2_ros/transform_broadcaster.h>
 
-int main( int argc, char** argv )
+#include "rclcpp/rclcpp.hpp"
+#include "std_msgs/msg/string.hpp"
+
+int main(int argc, char** argv)
 {
     std::string lexus_frame_id;
     bool foxglove_rotation;
-    ros::init(argc, argv, "lexus_3d");
-    ros::NodeHandle n("~");
-    n.param<std::string>("frame_id", lexus_frame_id, "lexus_link");
-    n.param<bool>("foxglove_rotation", foxglove_rotation, false);
+    rclcpp::init(argc, argv);
+    auto node = rclcpp::Node::make_shared("lexus_3d");
+    node->declare_parameter<std::string>("lexus_frame_id", "base_link");
+    node->get_parameter("lexus_frame_id", lexus_frame_id);
 
-    ros::Publisher marker_pub = n.advertise<visualization_msgs::Marker>("lexus_marker", 100);
-    
-    ROS_INFO("Lexus 3D model published");
- 
-    ros::Rate rate(40);
-    visualization_msgs::Marker lexus_marker;
+    node->declare_parameter<bool>("foxglove_rotation", false);
+    node->get_parameter("foxglove_rotation", foxglove_rotation);
+
+    auto marker_pub = node->create_publisher<visualization_msgs::msg::Marker>("lexus_marker", 100);
+    rclcpp::Rate loop_rate(40);
+
+    visualization_msgs::msg::Marker lexus_marker;
     lexus_marker.header.frame_id = lexus_frame_id;
     lexus_marker.id = 0;
-    lexus_marker.type = visualization_msgs::Marker::MESH_RESOURCE;
-    lexus_marker.action = visualization_msgs::Marker::ADD;
+    lexus_marker.type = visualization_msgs::msg::Marker::MESH_RESOURCE;
+    lexus_marker.action = visualization_msgs::msg::Marker::ADD;
    
     lexus_marker.scale.x = 1;
     lexus_marker.scale.y = 1;
@@ -46,16 +50,13 @@ int main( int argc, char** argv )
         lexus_marker.pose.orientation.w = 1.0;       
     }
 
-    lexus_marker.lifetime = ros::Duration();
-
     lexus_marker.mesh_resource = "package://rviz_markers/stl/lexus.stl";
 
-    while(ros::ok()) 
+    while(rclcpp::ok()) 
     {
-        lexus_marker.header.stamp = ros::Time::now();
-        lexus_marker.lifetime = ros::Duration();
-        marker_pub.publish(lexus_marker);
-        ros::spinOnce();
-        rate.sleep();
+        marker_pub->publish(lexus_marker); 
+        rclcpp::spin_some(node);
+        loop_rate.sleep();
     }
+    return 0;
 }

@@ -1,26 +1,29 @@
-#include <ros/ros.h>
-#include <visualization_msgs/Marker.h>
-#include "std_msgs/String.h"
-#include <geometry_msgs/Pose.h>
-#include <tf/transform_broadcaster.h>
+#include <sstream>
+#include "visualization_msgs/msg/marker.hpp"
+#include "std_msgs/msg/string.hpp"
+#include <geometry_msgs/msg/pose.hpp>
+#include <tf2_ros/transform_broadcaster.h>
 
-int main( int argc, char** argv )
+#include "rclcpp/rclcpp.hpp"
+#include "std_msgs/msg/string.hpp"
+
+int main(int argc, char** argv)
 {
     std::string turtlecar_frame_id;
-    ros::init(argc, argv, "turtlecar");
-    ros::NodeHandle n("~");
-    n.param<std::string>("frame_id", turtlecar_frame_id, "base_link");
+    rclcpp::init(argc, argv);
+    auto node = rclcpp::Node::make_shared("turtlecar_3d");
 
-    ros::Publisher marker_pub = n.advertise<visualization_msgs::Marker>("turtlecar_marker", 100);
-    
-    ROS_INFO("TurtleCar 3D model published");
+    node->declare_parameter<std::string>("turtlecar_frame_id", "base_link");
 
-    ros::Rate rate(40);
-    visualization_msgs::Marker turtlecar_marker;
+    node->get_parameter("turtlecar_frame_id", turtlecar_frame_id);
+
+    auto marker_pub = node->create_publisher<visualization_msgs::msg::Marker>("turtlecar_marker", 100);
+    rclcpp::Rate loop_rate(40);
+    visualization_msgs::msg::Marker turtlecar_marker;
     turtlecar_marker.header.frame_id = turtlecar_frame_id;
     turtlecar_marker.id = 0;
-    turtlecar_marker.type = visualization_msgs::Marker::MESH_RESOURCE;
-    turtlecar_marker.action = visualization_msgs::Marker::ADD;
+    turtlecar_marker.type = visualization_msgs::msg::Marker::MESH_RESOURCE;
+    turtlecar_marker.action = visualization_msgs::msg::Marker::ADD;
     
     turtlecar_marker.scale.x = 1;
     turtlecar_marker.scale.y = 1;
@@ -31,16 +34,12 @@ int main( int argc, char** argv )
     turtlecar_marker.color.b = 0.6f;
     turtlecar_marker.color.a = 1.0;
 
-    turtlecar_marker.lifetime = ros::Duration();
-
     turtlecar_marker.mesh_resource = "package://rviz_markers/stl/TurtleCar.stl";
 
-    while(ros::ok()) 
+    while(rclcpp::ok()) 
     {
-        turtlecar_marker.header.stamp = ros::Time::now();
-        turtlecar_marker.lifetime = ros::Duration();
-        marker_pub.publish(turtlecar_marker);
-        ros::spinOnce();
-        rate.sleep();
+        marker_pub->publish(turtlecar_marker); 
+        rclcpp::spin_some(node);
+        loop_rate.sleep();
     }
 }

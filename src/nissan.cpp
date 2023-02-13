@@ -1,26 +1,29 @@
-#include <ros/ros.h>
-#include <visualization_msgs/Marker.h>
-#include "std_msgs/String.h"
-#include <geometry_msgs/Pose.h>
-#include <tf/transform_broadcaster.h>
+#include <sstream>
+#include "visualization_msgs/msg/marker.hpp"
+#include "std_msgs/msg/string.hpp"
+#include <geometry_msgs/msg/pose.hpp>
+#include <tf2_ros/transform_broadcaster.h>
 
-int main( int argc, char** argv )
+#include "rclcpp/rclcpp.hpp"
+#include "std_msgs/msg/string.hpp"
+
+
+int main(int argc, char** argv)
 {
     std::string nissan_frame_id;
-    ros::init(argc, argv, "nissan_3d");
-    ros::NodeHandle n("~");
-    n.param<std::string>("frame_id", nissan_frame_id, "nissan_link");
+    rclcpp::init(argc, argv);
+    auto node = rclcpp::Node::make_shared("nissan_3d");
+    node->declare_parameter<std::string>("nissan_frame_id", "base_link");
 
-    ros::Publisher marker_pub = n.advertise<visualization_msgs::Marker>("nissan_marker", 100);
-    
-    ROS_INFO("Nissan 3D model published");
+    node->get_parameter("nissan_frame_id", nissan_frame_id);
 
-    ros::Rate rate(40);
-    visualization_msgs::Marker nissan_marker;
+    auto marker_pub = node->create_publisher<visualization_msgs::msg::Marker>("nissan_marker", 100);
+    rclcpp::Rate loop_rate(40);
+    visualization_msgs::msg::Marker nissan_marker;
     nissan_marker.header.frame_id = nissan_frame_id;
     nissan_marker.id = 0;
-    nissan_marker.type = visualization_msgs::Marker::MESH_RESOURCE;
-    nissan_marker.action = visualization_msgs::Marker::ADD;
+    nissan_marker.type = visualization_msgs::msg::Marker::MESH_RESOURCE;
+    nissan_marker.action = visualization_msgs::msg::Marker::ADD;
 
     nissan_marker.scale.x = 1;
     nissan_marker.scale.y = 1;
@@ -31,16 +34,13 @@ int main( int argc, char** argv )
     nissan_marker.color.b = 0.8f;
     nissan_marker.color.a = 1.0;
 
-    nissan_marker.lifetime = ros::Duration();
-
     nissan_marker.mesh_resource = "package://rviz_markers/stl/nissan.stl";
 
-    while(ros::ok()) 
+    while(rclcpp::ok()) 
     {
-        nissan_marker.header.stamp = ros::Time::now();
-        nissan_marker.lifetime = ros::Duration();
-        marker_pub.publish(nissan_marker);
-        ros::spinOnce();
-        rate.sleep();
+        marker_pub->publish(nissan_marker); 
+        rclcpp::spin_some(node);
+        loop_rate.sleep();
     }
+    return 0;
 }
