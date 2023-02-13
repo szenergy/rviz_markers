@@ -1,55 +1,55 @@
 <launch>
-    <node args="1.0 2.5 1.2 3.1415926535 0.0 0.0 map fake_drone 50" name="drone_f_tf" pkg="tf" type="static_transform_publisher"/>
-    <node args="2.0 4.0 0.31623 0.0 0.0 0.0 map fake_golf 50" name="golf_f_tf" pkg="tf" type="static_transform_publisher"/>
-    <node args="2.0 0.0 0.325 0.0 0.0 0.0 map fake_lexus 50" name="lexus_f_tf" pkg="tf" type="static_transform_publisher"/>
-    <node args="2.0 -3.0 0.31623 0.0 0.0 0.0 map fake_nissan 50" name="nissan_f_tf" pkg="tf" type="static_transform_publisher"/>
-    <node args="6.5 0.5 0.04 0.0 0.0 0.0 map fake_rosbot 50" name="rosbot_f_tf" pkg="tf" type="static_transform_publisher"/>
-    <node args="6.5 -0.5 0.04 0.0 0.0 0.0 map fake_turtlecar 50" name="turtlecar_f_tf" pkg="tf" type="static_transform_publisher"/>
-    <node args="6.5 0.0 0.105 0.0 0.0 0.0 map fake_loomo 50" name="loomo_f_tf" pkg="tf" type="static_transform_publisher"/>
-    <node args="5.0 2.0 1.0 0.0 0.0 0.0 map fake_stopbase 50" name="stopbase_f_tf" pkg="tf" type="static_transform_publisher"/>
-    <node args="5.0 2.0 1.0 0.0 0.0 0.0 map fake_stopletters 50" name="stopletters_f_tf" pkg="tf" type="static_transform_publisher"/>
-    <node args="6.0 2.0 0.0 0.0 0.0 0.0 map fake_cone 50" name="cone_f_tf" pkg="tf" type="static_transform_publisher"/>
+    <node args="1.0 2.5 1.2 3.1415926535 0.0 0.0 map fake_drone 50" name="drone_f_tf" pkg="tf" exec="static_transform_publisher"/>
+    <node args="2.0 4.0 0.31623 0.0 0.0 0.0 map fake_golf 50" name="golf_f_tf" pkg="tf" exec="static_transform_publisher"/>
+    <node args="2.0 0.0 0.325 0.0 0.0 0.0 map fake_lexus 50" name="lexus_f_tf" pkg="tf" exec="static_transform_publisher"/>
+    <node args="2.0 -3.0 0.31623 0.0 0.0 0.0 map fake_nissan 50" name="nissan_f_tf" pkg="tf" exec="static_transform_publisher"/>
+    <node args="6.5 0.5 0.04 0.0 0.0 0.0 map fake_rosbot 50" name="rosbot_f_tf" pkg="tf" exec="static_transform_publisher"/>
+    <node args="6.5 -0.5 0.04 0.0 0.0 0.0 map fake_turtlecar 50" name="turtlecar_f_tf" pkg="tf" exec="static_transform_publisher"/>
+    <node args="6.5 0.0 0.105 0.0 0.0 0.0 map fake_loomo 50" name="loomo_f_tf" pkg="tf" exec="static_transform_publisher"/>
+    <node args="5.0 2.0 1.0 0.0 0.0 0.0 map fake_stopbase 50" name="stopbase_f_tf" pkg="tf" exec="static_transform_publisher"/>
+    <node args="5.0 2.0 1.0 0.0 0.0 0.0 map fake_stopletters 50" name="stopletters_f_tf" pkg="tf" exec="static_transform_publisher"/>
+    <node args="6.0 2.0 0.0 0.0 0.0 0.0 map fake_cone 50" name="cone_f_tf" pkg="tf" exec="static_transform_publisher"/>
 
 
-    <node pkg="rviz_markers" type="drone" name="drone_f" output="screen">
+    <node pkg="rviz_markers" exec="drone" name="drone_f" output="screen">
             <param name="frame_id" value="fake_drone"/>
     </node>
-    <node pkg="rviz_markers" type="egolf" name="golf_f" output="screen">
+    <node pkg="rviz_markers" exec="egolf" name="golf_f" output="screen">
             <param name="frame_id" value="fake_golf"/>
     </node>
 
-    <node pkg="rviz_markers" type="lexus" name="lexus_f" output="screen">
+    <node pkg="rviz_markers" exec="lexus" name="lexus_f" output="screen">
             <param name="frame_id" value="fake_lexus"/>
             <param name="foxglove_rotation" value="false"/>
     </node>
 
-    <node pkg="rviz_markers" type="nissan" name="nissan_f" output="screen">
+    <node pkg="rviz_markers" exec="nissan" name="nissan_f" output="screen">
             <param name="frame_id" value="fake_nissan"/>
     </node>
 
-    <node pkg="rviz_markers" type="turtlecar" name="turtlecar_f" output="screen">
+    <node pkg="rviz_markers" exec="turtlecar" name="turtlecar_f" output="screen">
             <param name="frame_id" value="fake_turtlecar"/>
     </node>
 
-    <node pkg="rviz_markers" type="rosbot" name="rosbot_f" output="screen">
+    <node pkg="rviz_markers" exec="rosbot" name="rosbot_f" output="screen">
             <param name="frame_id" value="fake_rosbot"/>
     </node>
 
-    <node pkg="rviz_markers" type="loomo" name="loomo_f" output="screen">
+    <node pkg="rviz_markers" exec="loomo" name="loomo_f" output="screen">
             <param name="frame_id" value="fake_loomo"/>
     </node>
 
-    <node pkg="rviz_markers" type="stopbase" name="stopbase_f" output="screen">
+    <node pkg="rviz_markers" exec="stopbase" name="stopbase_f" output="screen">
             <param name="frame_id" value="fake_stopbase"/>
     </node>
 
-    <node pkg="rviz_markers" type="stopletters" name="stopletters_f" output="screen">
+    <node pkg="rviz_markers" exec="stopletters" name="stopletters_f" output="screen">
             <param name="frame_id" value="fake_stopletters"/>
     </node>
 
-    <node pkg="rviz_markers" type="cone" name="cone_f" output="screen">
+    <node pkg="rviz_markers" exec="cone" name="cone_f" output="screen">
             <param name="frame_id" value="fake_cone"/>
     </node>
 
-    <node name="rviz_config" pkg="rviz" type="rviz"  args="-d $(find rviz_markers)/config/demo1.rviz" output="screen"/>
+    <node name="rviz_config" pkg="rviz" exec="rviz"  args="-d $(find rviz_markers)/config/demo1.rviz" output="screen"/>
 </launch>
