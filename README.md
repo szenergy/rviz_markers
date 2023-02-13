@@ -22,7 +22,7 @@ roslaunch rviz_markers demo1.launch
 ```
 This will start `rviz`, publis some TF frames and start all markers, visible in `rviz`.
 
-The package currently contains two markers. 
+The package currently contains seven markers. 
 ### VW E-Golf
 Using the VW E-Golf marker:
 1. In a terminal window, start roscore
