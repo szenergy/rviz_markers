@@ -42,6 +42,7 @@ int main(int argc, char** argv)
 
     while(rclcpp::ok()) 
     {
+        loomo_marker.header.stamp = node->now();
         marker_pub->publish(loomo_marker); 
         rclcpp::spin_some(node);
         loop_rate.sleep();

@@ -37,6 +37,7 @@ int main(int argc, char** argv)
 
     while(rclcpp::ok()) 
     {
+        stopbase_marker.header.stamp = node->now();
         marker_pub->publish(stopbase_marker); 
         rclcpp::spin_some(node);
         loop_rate.sleep();

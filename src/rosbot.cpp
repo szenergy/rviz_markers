@@ -38,6 +38,7 @@ int main(int argc, char** argv)
 
     while(rclcpp::ok()) 
     {
+        rosbot_marker.header.stamp = node->now();
         marker_pub->publish(rosbot_marker); 
         rclcpp::spin_some(node);
         loop_rate.sleep();
