@@ -7,16 +7,17 @@
 #include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/string.hpp"
 
-int main(int argc, char** argv)
+int main(int argc, char **argv)
 {
     std::string stopbase_frame_id;
     rclcpp::init(argc, argv);
     auto node = rclcpp::Node::make_shared("stopbase_3d");
     node->declare_parameter<std::string>("stopbase_frame_id", "base_link");
+    auto qos = rclcpp::QoS(100);
 
     node->get_parameter("stopbase_frame_id", stopbase_frame_id);
 
-    auto marker_pub = node->create_publisher<visualization_msgs::msg::Marker>("stopbase_marker", 100);
+    auto marker_pub = node->create_publisher<visualization_msgs::msg::Marker>("stopbase_marker", qos);
     rclcpp::Rate loop_rate(40);
     visualization_msgs::msg::Marker stopbase_marker;
     stopbase_marker.header.frame_id = stopbase_frame_id;
@@ -35,10 +36,12 @@ int main(int argc, char** argv)
 
     stopbase_marker.mesh_resource = "package://rviz_markers/stl/StopSign.stl";
 
-    while(rclcpp::ok()) 
+    marker_pub->publish(stopbase_marker); 
+
+    while(rclcpp::ok())
     {
         stopbase_marker.header.stamp = node->now();
-        marker_pub->publish(stopbase_marker); 
+        marker_pub->publish(stopbase_marker);
         rclcpp::spin_some(node);
         loop_rate.sleep();
     }

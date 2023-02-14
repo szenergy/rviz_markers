@@ -7,16 +7,17 @@
 #include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/string.hpp"
 
-int main(int argc, char** argv)
+int main(int argc, char **argv)
 {
     std::string stopletters_frame_id;
     rclcpp::init(argc, argv);
     auto node = rclcpp::Node::make_shared("stoppletters_3d");
     node->declare_parameter<std::string>("stopletters_frame_id", "base_link");
-
+    auto qos = rclcpp::QoS(100);
     node->get_parameter("stopletters_frame_id", stopletters_frame_id);
 
-    auto marker_pub = node->create_publisher<visualization_msgs::msg::Marker>("stopletters_marker", 100);
+    
+    auto marker_pub = node->create_publisher<visualization_msgs::msg::Marker>("stopletters_marker", qos);
     rclcpp::Rate loop_rate(40);
 
     visualization_msgs::msg::Marker stopletters_marker;
@@ -36,7 +37,8 @@ int main(int argc, char** argv)
 
     stopletters_marker.mesh_resource = "package://rviz_markers/stl/StopLetters.stl";
 
-    while(rclcpp::ok()) 
+
+    while(rclcpp::ok())
     {
         stopletters_marker.header.stamp = node->now();
         marker_pub->publish(stopletters_marker); 

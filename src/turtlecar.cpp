@@ -7,17 +7,16 @@
 #include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/string.hpp"
 
-int main(int argc, char** argv)
+int main(int argc, char **argv)
 {
     std::string turtlecar_frame_id;
     rclcpp::init(argc, argv);
     auto node = rclcpp::Node::make_shared("turtlecar_3d");
-
     node->declare_parameter<std::string>("turtlecar_frame_id", "base_link");
-
+    auto qos = rclcpp::QoS(100);
     node->get_parameter("turtlecar_frame_id", turtlecar_frame_id);
 
-    auto marker_pub = node->create_publisher<visualization_msgs::msg::Marker>("turtlecar_marker", 100);
+    auto marker_pub = node->create_publisher<visualization_msgs::msg::Marker>("turtlecar_marker", qos);
     rclcpp::Rate loop_rate(40);
     visualization_msgs::msg::Marker turtlecar_marker;
     turtlecar_marker.header.frame_id = turtlecar_frame_id;

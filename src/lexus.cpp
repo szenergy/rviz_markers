@@ -13,10 +13,10 @@ int main(int argc, char **argv)
     rclcpp::init(argc, argv);
     auto node = rclcpp::Node::make_shared("lexus_3d");
     node->declare_parameter<std::string>("lexus_frame_id", "base_link");
-
+    auto qos = rclcpp::QoS(100);
     node->get_parameter("lexus_frame_id", lexus_frame_id);
 
-    auto marker_pub = node->create_publisher<visualization_msgs::msg::Marker>("lexus_marker", 100);
+    auto marker_pub = node->create_publisher<visualization_msgs::msg::Marker>("lexus_marker", qos);
     rclcpp::Rate loop_rate(40);
 
     visualization_msgs::msg::Marker lexus_marker;

@@ -7,16 +7,16 @@
 #include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/string.hpp"
 
-int main(int argc, char** argv)
+int main( int argc, char **argv)
 {
     std::string rosbot_frame_id;
     rclcpp::init(argc, argv);
     auto node = rclcpp::Node::make_shared("rosbot_3d");
     node->declare_parameter<std::string>("rosbot_frame_id", "base_link");
-
+    auto qos = rclcpp::QoS(100);
     node->get_parameter("rosbot_frame_id", rosbot_frame_id);
 
-    auto marker_pub = node->create_publisher<visualization_msgs::msg::Marker>("rosbot_marker", 100);
+    auto marker_pub = node->create_publisher<visualization_msgs::msg::Marker>("rosbot_marker", qos);
     rclcpp::Rate loop_rate(40);
 
     visualization_msgs::msg::Marker rosbot_marker;
@@ -36,12 +36,13 @@ int main(int argc, char** argv)
 
     rosbot_marker.mesh_resource = "package://rviz_markers/stl/rosbot.stl";
 
-    while(rclcpp::ok()) 
+    while(rclcpp::ok())
     {
         rosbot_marker.header.stamp = node->now();
         marker_pub->publish(rosbot_marker); 
         rclcpp::spin_some(node);
         loop_rate.sleep();
+
     }
     return 0;
 }

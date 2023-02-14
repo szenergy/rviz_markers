@@ -1,8 +1,10 @@
 #include <sstream>
+#include <chrono>
 #include "visualization_msgs/msg/marker.hpp"
 #include "std_msgs/msg/string.hpp"
 #include <geometry_msgs/msg/pose.hpp>
 #include <tf2_ros/transform_broadcaster.h>
+#include <ament_index_cpp/get_package_share_directory.hpp>
 
 #include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/string.hpp"
@@ -14,10 +16,10 @@ int main( int argc, char** argv)
     rclcpp::init(argc, argv);
     auto node = rclcpp::Node::make_shared("drone_3d");
     node->declare_parameter<std::string>("drone_frame_id", "base_link");
-
+    auto qos = rclcpp::QoS(100);
     node->get_parameter("drone_frame_id", drone_frame_id);
 
-    auto marker_pub = node->create_publisher<visualization_msgs::msg::Marker>("drone_marker", 100);
+    auto marker_pub = node->create_publisher<visualization_msgs::msg::Marker>("drone_marker", qos);
     rclcpp::Rate loop_rate(40);
     visualization_msgs::msg::Marker drone_marker;
     drone_marker.header.frame_id = drone_frame_id;
@@ -36,10 +38,11 @@ int main( int argc, char** argv)
 
     drone_marker.mesh_resource = "package://rviz_markers/stl/drone600.stl";
 
-    while(rclcpp::ok()) 
+
+    while(rclcpp::ok())
     {
         drone_marker.header.stamp = node->now();
-        marker_pub->publish(drone_marker); 
+        marker_pub->publish(drone_marker);
         rclcpp::spin_some(node);
         loop_rate.sleep();
     }

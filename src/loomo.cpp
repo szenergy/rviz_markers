@@ -1,11 +1,10 @@
-#include <chrono>
-#include <functional>
-#include <memory>
 #include <sstream>
+#include <chrono>
 #include "visualization_msgs/msg/marker.hpp"
 #include "std_msgs/msg/string.hpp"
 #include <geometry_msgs/msg/pose.hpp>
 #include <tf2_ros/transform_broadcaster.h>
+#include <ament_index_cpp/get_package_share_directory.hpp>
 
 #include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/string.hpp"
@@ -15,9 +14,7 @@ int main(int argc, char** argv)
     std::string loomo_frame_id;
     rclcpp::init(argc, argv);
     auto node = rclcpp::Node::make_shared("loomo_3d");
-
     node->declare_parameter<std::string>("loomo_frame_id", "base_link");
-
     node->get_parameter("loomo_frame_id", loomo_frame_id);
 
     auto marker_pub = node->create_publisher<visualization_msgs::msg::Marker>("loomo_marker", 100);
@@ -25,6 +22,7 @@ int main(int argc, char** argv)
 
     visualization_msgs::msg::Marker loomo_marker;
     loomo_marker.header.frame_id = loomo_frame_id;
+    loomo_marker.header.stamp = node->now();
     loomo_marker.id = 0;
     loomo_marker.type = visualization_msgs::msg::Marker::MESH_RESOURCE;
     loomo_marker.action = visualization_msgs::msg::Marker::ADD;
@@ -40,11 +38,14 @@ int main(int argc, char** argv)
 
     loomo_marker.mesh_resource = "package://rviz_markers/stl/loomo.stl";
 
-    while(rclcpp::ok()) 
+    loomo_marker.header.stamp = node->now();
+
+    while(rclcpp::ok())
     {
         loomo_marker.header.stamp = node->now();
         marker_pub->publish(loomo_marker); 
         rclcpp::spin_some(node);
         loop_rate.sleep();
     }
+    return 0;
 }
