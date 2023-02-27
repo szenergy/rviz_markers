@@ -92,15 +92,4 @@ install(TARGETS cone drone egolf lexus loomo nissan rosbot stopbase stopletters 
 # )
 
 
-
-# add_custom_command(
-#     TARGET ${PROJECT_NAME} POST_BUILD
-#     COMMAND echo "FOO"
-#     COMMENT ""
-#     VERBATIM)
-
-# add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
-#                    COMMAND ${CMAKE_COMMAND} -E copy_directory
-#                   ${CMAKE_SOURCE_DIR}/stl ${CMAKE_CURRENT_BINARY_DIR}/stl)
-
 ament_package()
