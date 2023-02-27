@@ -76,7 +76,9 @@ if(BUILD_TESTING)
   ament_lint_auto_find_test_dependencies()
 endif()
 
-install (DIRECTORY launch
+install (DIRECTORY 
+  launch
+  stl
   DESTINATION share/${PROJECT_NAME}
 )
 
@@ -88,5 +90,17 @@ install(TARGETS cone drone egolf lexus loomo nissan rosbot stopbase stopletters 
 # install(DIRECTORY include/${PROJECT_NAME}
 #   DESTINATION include/${PROJECT_NAME}
 # )
+
+
+
+# add_custom_command(
+#     TARGET ${PROJECT_NAME} POST_BUILD
+#     COMMAND echo "FOO"
+#     COMMENT ""
+#     VERBATIM)
+
+# add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+#                    COMMAND ${CMAKE_COMMAND} -E copy_directory
+#                   ${CMAKE_SOURCE_DIR}/stl ${CMAKE_CURRENT_BINARY_DIR}/stl)
 
 ament_package()

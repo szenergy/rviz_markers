@@ -4,9 +4,9 @@ import os
 
 def generate_launch_description():
 
-    #pkg_name = 'lexus_bringup'
+    #pkg_name = 'rviz_markers'
     #pkg_dir = os.popen('/bin/bash -c "source /usr/share/colcon_cd/function/colcon_cd.sh && colcon_cd %s && pwd"' % pkg_name).read().strip()
-
+    #print(pkg_dir)
 
     return LaunchDescription([
         Node(
