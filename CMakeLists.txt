@@ -147,6 +147,7 @@ add_executable(loomo src/loomo.cpp)
 add_executable(stopbase src/stopbase.cpp)
 add_executable(stopletters src/stopletters.cpp)
 add_executable(cone src/cone.cpp)
+add_executable(szemission src/szemission.cpp)
 target_link_libraries(traffic_light ${catkin_LIBRARIES})
 target_link_libraries(drone ${catkin_LIBRARIES})
 target_link_libraries(egolf ${catkin_LIBRARIES})
@@ -158,6 +159,7 @@ target_link_libraries(loomo ${catkin_LIBRARIES})
 target_link_libraries(stopbase ${catkin_LIBRARIES})
 target_link_libraries(stopletters ${catkin_LIBRARIES})
 target_link_libraries(cone ${catkin_LIBRARIES})
+target_link_libraries(szemission ${catkin_LIBRARIES})
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries

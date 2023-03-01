@@ -1,6 +1,6 @@
 <launch>
     <node args="1.0 2.5 1.2 3.1415926535 0.0 0.0 map fake_drone 50" name="drone_f_tf" pkg="tf" type="static_transform_publisher"/>
-    <node args="2.0 4.0 0.31623 0.0 0.0 0.0 map fake_golf 50" name="golf_f_tf" pkg="tf" type="static_transform_publisher"/>
+    <node args="2.0 6.0 0.31623 0.0 0.0 0.0 map fake_golf 50" name="golf_f_tf" pkg="tf" type="static_transform_publisher"/>
     <node args="2.0 0.0 0.325 0.0 0.0 0.0 map fake_lexus 50" name="lexus_f_tf" pkg="tf" type="static_transform_publisher"/>
     <node args="2.0 -3.0 0.31623 0.0 0.0 0.0 map fake_nissan 50" name="nissan_f_tf" pkg="tf" type="static_transform_publisher"/>
     <node args="6.5 0.5 0.04 0.0 0.0 0.0 map fake_rosbot 50" name="rosbot_f_tf" pkg="tf" type="static_transform_publisher"/>
@@ -9,6 +9,7 @@
     <node args="5.0 2.0 1.0 0.0 0.0 0.0 map fake_stopbase 50" name="stopbase_f_tf" pkg="tf" type="static_transform_publisher"/>
     <node args="5.0 2.0 1.0 0.0 0.0 0.0 map fake_stopletters 50" name="stopletters_f_tf" pkg="tf" type="static_transform_publisher"/>
     <node args="6.0 2.0 0.0 0.0 0.0 0.0 map fake_cone 50" name="cone_f_tf" pkg="tf" type="static_transform_publisher"/>
+    <node args="3.0 4.0 0.278 0.0 0.0 0.0 map fake_szemission 50" name="szemission_f_tf" pkg="tf" type="static_transform_publisher"/>
 
 
     <node pkg="rviz_markers" type="drone" name="drone_f" output="screen">
@@ -49,6 +50,10 @@
 
     <node pkg="rviz_markers" type="cone" name="cone_f" output="screen">
             <param name="frame_id" value="fake_cone"/>
+    </node>
+
+    <node pkg="rviz_markers" type="szemission" name="szemission_f" output="screen">
+            <param name="frame_id" value="fake_szemission"/>
     </node>
 
     <node name="rviz_config" pkg="rviz" type="rviz"  args="-d $(find rviz_markers)/config/demo1.rviz" output="screen"/>
